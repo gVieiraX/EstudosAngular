@@ -1,0 +1,22 @@
+<p>home works!</p>
+
+<button [attr.aria-label]="name" (click)="submit()">Clique Aqui</button>
+
+@if (devMostrar) {
+ <h1>Meu titulo</h1>
+}@else if (name =="Gabriel") {
+    <h1>Meu nome é {{name}}</h1> 
+} 
+@else {
+ <h1>Não foi verdadeiro</h1>
+}
+
+@for(item of listItems; track item){
+<P>{{item}}</P>
+}
+
+@for(item of listItems2; track item.id){
+
+}
+ <h1>{{minhaPropsOut}}</h1>
+
