@@ -47,5 +47,5 @@ dados.pop()
 
 //Datas
 
-let data:Date = new Date("29-04-2025 16:02");
+let data: Date = new Date("2025-04-29 16:02");
 console.log(data.toString())
