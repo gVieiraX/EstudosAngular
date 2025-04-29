@@ -1,0 +1,11 @@
+<h1>My App</h1>
+<app-title name="P1"></app-title>
+<app-title name="P2"></app-title>
+
+
+@if (isAliveCheckSimple) {
+    <app-check-sample></app-check-sample>
+}
+
+<button (click)="disposeCheckSimple()">Destruir</button>
+<router-outlet />
