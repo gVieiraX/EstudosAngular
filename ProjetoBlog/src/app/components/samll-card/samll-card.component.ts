@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-samll-card',
@@ -7,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrl: './samll-card.component.css'
 })
 export class SamllCardComponent {
-
+  @Input()
+  photoCover:string = ""
+  @Input()
+  cardTitle:string = ""
 }
