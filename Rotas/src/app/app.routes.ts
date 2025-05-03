@@ -7,11 +7,16 @@ export const routes: Routes = [
         path:'',
         component:TitleComponent,
         pathMatch:'full'
+    }
+    ,{
+        path:'portfolio',
+        component:CardComponent,
+        children:[{
+            path:':id',
+            component:CardComponent
+        }]
     },
     {
-        path:'portfolio',
-        component:CardComponent
-    },{
         path:'**',
         redirectTo:''
     }
