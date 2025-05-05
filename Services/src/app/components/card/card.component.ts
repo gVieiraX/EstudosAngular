@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
+import { PokemonServiceService } from '../../services/pokemon-service.service';
+import { error } from 'console';
 
 @Component({
   selector: 'app-card',
@@ -9,4 +11,14 @@ import { Component } from '@angular/core';
 export class CardComponent {
   name:string = "Pikachu"
   attributesTypes:string[] =  ['FIRE','ROCK','WIND']
+
+  constructor(private service:PokemonServiceService){
+  }
+
+  ngOnInit():void{
+    this.service.getPokemon("Pikachu").subscribe({
+      next:(res) => console.log(res),
+      error:(err) => console.log(err)
+    })
+  }
 }
