@@ -1,6 +1,6 @@
 import { Component,OnInit } from '@angular/core';
 import { PokemonServiceService } from '../../services/pokemon-service.service';
-import { error } from 'console';
+import { PokemonData } from '../../models/pokemonData';
 
 @Component({
   selector: 'app-card',
@@ -8,17 +8,46 @@ import { error } from 'console';
   templateUrl: './card.component.html',
   styleUrl: './card.component.css'
 })
-export class CardComponent {
-  name:string = "Pikachu"
-  attributesTypes:string[] =  ['FIRE','ROCK','WIND']
-
-  constructor(private service:PokemonServiceService){
+export class CardComponent implements OnInit {
+  pokemon:PokemonData = {
+    id:0,
+    name:'',
+    sprites:{front_default:''},
+    types: []
   }
 
-  ngOnInit():void{
-    this.service.getPokemon("Pikachu").subscribe({
-      next:(res) => console.log(res),
-      error:(err) => console.log(err)
-    })
+  constructor(
+    private service:PokemonServiceService
+  ) {
+
+    this.pokemon = {
+      id:0, name:'',
+      sprites:{
+        front_default: ''
+      },types:[]
+    }
+
   }
+
+  ngOnInit(): void {
+    this.getPokemon('pikachu')
+  }
+
+  getPokemon(searchName:string){
+    this.service.getPokemon(searchName).subscribe(
+      {
+        next: (res) => {
+
+          this.pokemon = {
+            id: res.id,
+            name: res.name,
+            sprites: res.sprites,
+            types: res.types
+          }
+        },
+        error: (err) => console.log('not found')
+      }
+    )
+  }
+
 }

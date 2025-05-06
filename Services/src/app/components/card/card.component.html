@@ -1,15 +1,19 @@
 <div class="card">
+  <input type="text" (input)="getPokemon($any($event.target).value)" >
+
     <div class="card-title">
-        <h3>{{name}}</h3>
+        <h3>{{pokemon.name}}</h3>
     </div>
 
     <div class="card-body">
-        <img src="" alt="">
+        <img [src]="pokemon.sprites.front_default" alt="">
     </div>
 
     <div class="card-stats">
-        @for (type of attributesTypes; track type) {
-          <span class="card-stats-type">{{ type }}</span>
+        @for (t of pokemon.types; track t) {
+          <span class="card-stats-type">{{ t.type.name }}</span>
         }
       </div>      
     </div>
+
+    
